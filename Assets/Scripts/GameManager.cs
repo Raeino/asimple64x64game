@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     private bool canPause = true;
     private bool restarting = false;
 
-
     [SerializeField] private GameObject aGameWhere;
     [SerializeField] private GameObject pressAnyKey;
 
@@ -81,8 +80,10 @@ public class GameManager : MonoBehaviour
         scoreTextAnimator.SetTrigger("Point");
 
         switch(points) {
-            case 10:
-            case 20:
+            case 5:
+            case 15:
+            case 25:
+            case 45:
             case 60:
                 dotSpawner.spawnTimeRange /= 1.25f;
                 break;
@@ -105,6 +106,7 @@ public class GameManager : MonoBehaviour
     public void GameOver() {
         canPause = false;
 
+        dotSpawner.enabled = false;
         StartCoroutine(ReduceTime());
         StartCoroutine(StartOver());
     }
@@ -114,10 +116,11 @@ public class GameManager : MonoBehaviour
         player.gameObject.SetActive(false);
 
         foreach(Transform dot in dotSpawner.transform) {
-            StartCoroutine(dot.GetComponent<Dot>().DotDestruction(2));
+            if (dot.gameObject)
+                StartCoroutine(dot.GetComponent<Dot>().DotDestruction(2));
         }
 
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.75f);
         PauseGame();
 
         // Reset things
@@ -125,6 +128,7 @@ public class GameManager : MonoBehaviour
         player.transform.position = Vector3.zero;
         if (player.disabled)
             player.Enable();
+        dotSpawner.enabled = true;
         dotSpawner.ResetSpawnTimers();
         points = 0;
 

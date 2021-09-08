@@ -952,7 +952,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367152218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.04, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -972,7 +972,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xSpawnPosRange: {x: -4.5, y: 4.5}
   ySpawnPos: 6
-  spawnTimeRange: {x: 1.5, y: 3}
+  spawnTimeRange: {x: 1.5, y: 2.5}
   dotPrefab: {fileID: 6626015329108662293, guid: 65ab7ad364a76ef4ea98ea36fc430131, type: 3}
   deadlyDotPrefab: {fileID: 4196433203543524206, guid: bfd70fe8b87a36c4bb99dd53778fea7b, type: 3}
   cameraAnimator: {fileID: 0}
