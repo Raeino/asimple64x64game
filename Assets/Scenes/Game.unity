@@ -3007,7 +3007,7 @@ GameObject:
   - component: {fileID: 1682243654}
   - component: {fileID: 1682243653}
   m_Layer: 5
-  m_Name: Right Edge
+  m_Name: Left Edge (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
