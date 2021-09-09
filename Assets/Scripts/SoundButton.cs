@@ -16,8 +16,8 @@ public class SoundButton : MonoBehaviour
     }
 
     public void Mute() {
-        backMusic.SetActive(!muted);
-        currentImage.sprite = muted ? activeImage : mutedImage;
         muted = !muted;
+        backMusic.SetActive(!muted);
+        currentImage.sprite = muted ? mutedImage : activeImage;
     }
 }

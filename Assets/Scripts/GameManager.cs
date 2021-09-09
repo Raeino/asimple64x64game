@@ -58,8 +58,9 @@ public class GameManager : MonoBehaviour
                 state = GameState.Running;
                 Time.timeScale = 1f;
 
-                ToggleObject(pressAnyKey);
                 ToggleObject(soundButton);
+                if (pressAnyKey.activeSelf)
+                    pressAnyKey.SetActive(false);
 
                 if (aGameWhere)
                     Destroy(aGameWhere);
