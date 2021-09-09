@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject aGameWhere;
     [SerializeField] private GameObject pressAnyKey;
+    [SerializeField] private GameObject soundButton;
 
     public enum GameState {
         Running,
@@ -67,11 +68,8 @@ public class GameManager : MonoBehaviour
                     restarting = false;
                     scoreText.text = "SCORE:" + points;
                 }
-
-                return;
             }
         }
-
     }
 
     public void AddPoints(int pointsToAdd) {
