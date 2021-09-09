@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class SoundButton : MonoBehaviour
 {
-    [SerializeField] private GameObject backMusic;
+    [SerializeField] private AudioSource backMusic;
 
     [SerializeField] private Sprite activeImage;
     [SerializeField] private Sprite mutedImage;
@@ -17,7 +17,7 @@ public class SoundButton : MonoBehaviour
 
     public void Mute() {
         muted = !muted;
-        backMusic.SetActive(!muted);
+        backMusic.mute = muted;
         currentImage.sprite = muted ? mutedImage : activeImage;
     }
 }
