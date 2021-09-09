@@ -58,8 +58,8 @@ public class GameManager : MonoBehaviour
                 state = GameState.Running;
                 Time.timeScale = 1f;
 
-                if (pressAnyKey.activeSelf)
-                    pressAnyKey.SetActive(false);
+                ToggleObject(pressAnyKey);
+                ToggleObject(soundButton);
 
                 if (aGameWhere)
                     Destroy(aGameWhere);
@@ -70,6 +70,10 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void ToggleObject(GameObject canvObj) {
+        canvObj.SetActive(!canvObj.activeSelf);
     }
 
     public void AddPoints(int pointsToAdd) {
@@ -113,7 +117,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator StartOver() {
         yield return new WaitForSeconds(0.35f);
 
-        player.gameObject.SetActive(false);
+        ToggleObject(player.gameObject);
         foreach (Transform dot in dotSpawner.transform) {
             if (dot.gameObject)
                 StartCoroutine(dot.GetComponent<Dot>().DotDestruction(2));
@@ -123,7 +127,7 @@ public class GameManager : MonoBehaviour
         PauseGame();
 
         // Reset things
-        player.gameObject.SetActive(true);
+        ToggleObject(player.gameObject);
         player.transform.position = Vector3.zero;
         if (player.disabled)
             player.Enable();
@@ -131,7 +135,7 @@ public class GameManager : MonoBehaviour
         dotSpawner.ResetSpawnTimers();
         points = 0;
 
-        pressAnyKey.SetActive(true);
+        ToggleObject(pressAnyKey);
         canPause = true;
         restarting = true;
     }
@@ -139,6 +143,8 @@ public class GameManager : MonoBehaviour
     private void PauseGame() {
         menuCanvasAnim.SetTrigger("Pause");
         scoreTextAnimator.SetTrigger("Pause");
+
+        ToggleObject(soundButton);
 
         state = GameState.Pause;
         Time.timeScale = 0f;
