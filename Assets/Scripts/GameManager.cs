@@ -106,16 +106,17 @@ public class GameManager : MonoBehaviour
     public void GameOver() {
         canPause = false;
 
+        player.audioSource.PlayOneShot(player.redHitSounds[Random.Range(0, player.redHitSounds.Length)]);
         dotSpawner.enabled = false;
         StartCoroutine(ReduceTime());
         StartCoroutine(StartOver());
     }
 
     private IEnumerator StartOver() {
-        yield return new WaitForSeconds(0.25f);
-        player.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.35f);
 
-        foreach(Transform dot in dotSpawner.transform) {
+        player.gameObject.SetActive(false);
+        foreach (Transform dot in dotSpawner.transform) {
             if (dot.gameObject)
                 StartCoroutine(dot.GetComponent<Dot>().DotDestruction(2));
         }

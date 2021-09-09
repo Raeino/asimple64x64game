@@ -16,9 +16,9 @@ public class Player : MonoBehaviour
     private readonly float tutoDragTime = 3f;
     private float tutoDragTimeCounter = 0f;
 
-    [SerializeField] AudioClip[] whiteHitSounds;
-    [SerializeField] AudioClip[] redHitSounds;
-    AudioSource audioSource;
+    [SerializeField] private AudioClip[] whiteHitSounds;
+    public AudioClip[] redHitSounds;
+    [HideInInspector] public AudioSource audioSource;
 
     private void Awake() {
         trailSpawner = GetComponent<TrailSpawner>();
