@@ -13,11 +13,17 @@ public class SoundButton : MonoBehaviour
 
     private void Awake() {
         currentImage = GetComponent<Image>();
+
+        // Keep muted stat from last time
+        if (PlayerPrefs.GetInt("muted", 0) == 1)
+            Mute();
     }
 
     public void Mute() {
         muted = !muted;
         backMusic.mute = muted;
         currentImage.sprite = muted ? mutedImage : activeImage;
+
+        PlayerPrefs.SetInt("muted", muted ? 1 : 0);
     }
 }
