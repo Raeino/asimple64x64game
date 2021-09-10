@@ -68,9 +68,8 @@ public class GameManager : MonoBehaviour
 
         switch(points) {
             case 5:
-            case 15:
-            case 25:
-            case 45:
+            case 10:
+            case 20:
             case 60:
                 dotSpawner.spawnTimeRange /= 1.25f;
                 break;
@@ -162,7 +161,7 @@ public class GameManager : MonoBehaviour
     private void HighscoreCheck() {
         if (points > highScore) {
             PlayerPrefs.SetInt("Highscore", points);
-            highscoreText.text = "HIGHSCORE: " + points;
+            highscoreText.text = "HIGHSCORE:" + points;
         }
     }
 }
