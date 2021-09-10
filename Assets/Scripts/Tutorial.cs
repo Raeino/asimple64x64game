@@ -18,6 +18,7 @@ public class Tutorial : MonoBehaviour
         if (firstGame == 1) {
             dotSpawner.SetActive(true);
             dotSpawner.GetComponent<DotSpawner>().canSpawnWhiteDots = true;
+            PlayerPrefs.Save();
             Destroy(youUseYourMouseToDragThatBlackThing);
             Destroy(youCollectWhiteDots);
             Destroy(youAvoidRedDots);

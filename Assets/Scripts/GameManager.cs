@@ -160,8 +160,10 @@ public class GameManager : MonoBehaviour
 
     private void HighscoreCheck() {
         if (points > highScore) {
-            PlayerPrefs.SetInt("Highscore", points);
-            highscoreText.text = "HIGHSCORE:" + points;
+            highScore = points;
+            PlayerPrefs.SetInt("Highscore", highScore);
+            highscoreText.text = "HIGHSCORE:" + highScore;
+            PlayerPrefs.Save();
         }
     }
 }
