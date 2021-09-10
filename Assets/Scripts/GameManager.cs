@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Player player;
 
     [SerializeField] private Text scoreText;
+    [SerializeField] private Text highscoreText;
     [HideInInspector] public int points = 0;
+    private int highScore;
 
     [SerializeField] private Animator menuCanvasAnim;
     private Animator scoreTextAnimator;
@@ -35,12 +37,13 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
 
         scoreText.text = "SCORE:" + points;
+        highScore = PlayerPrefs.GetInt("Highscore", 0);
+        highscoreText.text = "HIGHSCORE: " + highScore;
     }
 
     private void Update() {
         // Update Game
         if (state == GameState.Running) {
-
             if (Input.anyKeyDown && !Input.GetMouseButtonDown(0) && canPause) {
                 PauseGame();
                 return;
@@ -49,27 +52,8 @@ public class GameManager : MonoBehaviour
 
         // Update Pause
         if (state == GameState.Pause) {
-
-            if (Input.anyKeyDown && !Input.GetMouseButtonDown(0)) {
-
-                menuCanvasAnim.SetTrigger("Resume");
-                scoreTextAnimator.SetTrigger("Resume");
-
-                state = GameState.Running;
-                Time.timeScale = 1f;
-
-                ToggleObject(soundButton);
-                if (pressAnyKey.activeSelf)
-                    pressAnyKey.SetActive(false);
-
-                if (aGameWhere)
-                    Destroy(aGameWhere);
-
-                if (restarting) {
-                    restarting = false;
-                    scoreText.text = "SCORE:" + points;
-                }
-            }
+            if (Input.anyKeyDown && !Input.GetMouseButtonDown(0))
+                ResumeGame();
         }
     }
 
@@ -126,6 +110,7 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(0.75f);
         PauseGame();
+        HighscoreCheck();
 
         // Reset things
         ToggleObject(player.gameObject);
@@ -146,8 +131,39 @@ public class GameManager : MonoBehaviour
         scoreTextAnimator.SetTrigger("Pause");
 
         ToggleObject(soundButton);
+        highscoreText.gameObject.SetActive(true);
 
         state = GameState.Pause;
         Time.timeScale = 0f;
+    }
+
+    private void ResumeGame() {
+        menuCanvasAnim.SetTrigger("Resume");
+        scoreTextAnimator.SetTrigger("Resume");
+
+        state = GameState.Running;
+        Time.timeScale = 1f;
+
+        ToggleObject(soundButton);
+        if (pressAnyKey.activeSelf)
+            pressAnyKey.SetActive(false);
+
+        if (aGameWhere)
+            Destroy(aGameWhere);
+
+        if (restarting) {
+            restarting = false;
+            scoreText.text = "SCORE:" + points;
+        }
+
+        highscoreText.gameObject.SetActive(false);
+    }
+
+    // returns true if there is new highscore
+    private void HighscoreCheck() {
+        if (points > highScore) {
+            PlayerPrefs.SetInt("Highscore", points);
+            highscoreText.text = "HIGHSCORE: " + points;
+        }
     }
 }
