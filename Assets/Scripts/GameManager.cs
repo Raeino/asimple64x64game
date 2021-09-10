@@ -159,7 +159,6 @@ public class GameManager : MonoBehaviour
         highscoreText.gameObject.SetActive(false);
     }
 
-    // returns true if there is new highscore
     private void HighscoreCheck() {
         if (points > highScore) {
             PlayerPrefs.SetInt("Highscore", points);
