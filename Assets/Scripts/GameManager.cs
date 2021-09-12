@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pressAnyKey;
     [SerializeField] private GameObject soundButton;
 
+    // NG stuff
+    [SerializeField] private NGHelper ngHelper;
+    private const int scoreboardId = 10780;
+
     public enum GameState {
         Running,
         Pause
@@ -163,6 +167,7 @@ public class GameManager : MonoBehaviour
             highScore = points;
             PlayerPrefs.SetInt("Highscore", highScore);
             highscoreText.text = "HIGHSCORE:" + highScore;
+            ngHelper.NGSubmitScore(scoreboardId, highScore);
             PlayerPrefs.Save();
         }
     }

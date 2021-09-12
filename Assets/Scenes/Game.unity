@@ -1002,6 +1002,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04864d9a5a829314d962f50fd62a7a21, type: 3}
+--- !u!1 &347821023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 347821025}
+  - component: {fileID: 347821024}
+  m_Layer: 0
+  m_Name: Newgrounds.io Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &347821024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347821023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec46e562b7e18a640823a4f0ede0a9e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  app_id: 52994:HOZ1E8Ys
+  session_id: 
+  aes_base64_key: yO6L6oj95nv/9zmFYOgAEQ==
+  output_network_data: 0
+--- !u!4 &347821025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347821023}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &367152218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,6 +1638,7 @@ MonoBehaviour:
   aGameWhere: {fileID: 118449226}
   pressAnyKey: {fileID: 695966544}
   soundButton: {fileID: 1176978084}
+  ngHelper: {fileID: 1906131075}
   state: 0
 --- !u!4 &980121888
 Transform:
@@ -8226,6 +8274,50 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1512873660503506244, guid: 04864d9a5a829314d962f50fd62a7a21, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 04864d9a5a829314d962f50fd62a7a21, type: 3}
+--- !u!1 &1906131074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1906131076}
+  - component: {fileID: 1906131075}
+  m_Layer: 0
+  m_Name: NGHelper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1906131075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906131074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101e5eb815951874c919bdbed3754d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ngioCore: {fileID: 347821024}
+--- !u!4 &1906131076
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906131074}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1948452273
 PrefabInstance:
   m_ObjectHideFlags: 0
